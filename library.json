@@ -5,7 +5,7 @@
   "keywords": ["stepper", "74hc595", "shift-register"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mussacharles60/ShiftRegister74HC595.git"
+    "url": "https://github.com/mussacharles60/StepperShiftRegister74HC595.git"
   },
   "authors": [
     {
