@@ -1,0 +1,19 @@
+{
+  "name": "StepperShiftRegister74HC595",
+  "version": "1.0.0",
+  "description": "Arduino Stepper motor library using 74HC595 shift registers",
+  "keywords": ["stepper", "74hc595", "shift-register"],
+  "authors": [
+    {
+      "name": "Mussa Charles",
+      "maintainer": true
+    }
+  ],
+  "frameworks": ["arduino"],
+  "platforms": "*",
+  "dependencies": [
+    {
+      "name": "ShiftRegister74HC595"
+    }
+  ]
+}
