@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "description": "Arduino Stepper motor library using 74HC595 shift registers",
   "keywords": ["stepper", "74hc595", "shift-register"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mussacharles60/ShiftRegister74HC595.git"
+  },
   "authors": [
     {
       "name": "Mussa Charles",
+      "email": "mussacharles60@gmail.com",
+      "url": "https://myssatech.com",
       "maintainer": true
     }
   ],
+  "license": "MIT",
   "frameworks": ["arduino"],
   "platforms": "*",
   "dependencies": [
     {
-      "name": "ShiftRegister74HC595"
+      "name": "ShiftRegister74HC595",
+      "version": "*"
     }
   ]
 }
