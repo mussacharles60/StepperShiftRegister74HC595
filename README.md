@@ -34,9 +34,17 @@ You **must use a motor driver**, such as:
 
 ## 📦 Installation (PlatformIO)
 
-This is a **custom local library**.
+This library is available in the PlatformIO Registry.
 
-Project structure:
+Add it to your `platformio.ini`:
+
+```ini
+lib_deps =
+  mussacharles60/StepperShiftRegister74HC595@^1.0.2
+```
+PlatformIO will auto-import it.
+
+Project structure: (If you want to add this library manually)
 ```
 your-project/
 ├── lib/
