@@ -31,8 +31,11 @@ public:
         uint8_t pin3,
         uint8_t pin4
     );
-    void setSpeed(long rpm);
-    void step(int steps);
+    void setSpeed(long rpm);    // Set motor speed - RPM
+    void step(int steps);       // Blocking
+    void stepAsync(long steps); // Non-blocking (async)
+    void update();              // Call repeatedly from loop()
+    bool isRunning();           // Async status
 
 private:
     void stepMotor(uint8_t step);
@@ -49,6 +52,9 @@ private:
     // Delay between steps (microseconds)
     unsigned long _stepDelay;
 
+    // coil sequence index (0–3)
+    int _phase = 0;
+
     // Timestamp of last step
     unsigned long _lastStepTime;
 
@@ -57,6 +63,18 @@ private:
 
     // Output pins on the shift register (4 per motor)
     uint8_t _pins[4];
+
+    // Total number of steps requested for async motion
+    long _targetSteps = 0;
+
+    // Number of steps already executed in async mode
+    long _currentSteps = 0;
+
+    // Step direction: +1 = forward, -1 = reverse
+    int _direction = 1;
+
+    // Indicates whether the motor is currently moving asynchronously
+    bool _isMoving = false;
 };
 
 #include "StepperShiftRegister74HC595.hpp"

@@ -1,3 +1,6 @@
 StepperShiftRegister74HC595	KEYWORD1
 setSpeed	KEYWORD2
 step	KEYWORD2
+stepAsync	KEYWORD2
+update	KEYWORD2
+isRunning	KEYWORD2
