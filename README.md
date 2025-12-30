@@ -12,6 +12,7 @@ This library is designed for **Arduino & PlatformIO** projects where pin count i
 * ✅ Supports **multiple chained 74HC595** shift registers
 * ✅ Drive **multiple stepper motors** simultaneously
 * ✅ Familiar Arduino `Stepper`-style API
+* ✅ **Blocking and non-blocking (async) stepping modes**
 * ✅ No dynamic memory (safe for AVR)
 * ✅ Works with **ULN2003, L293D, L298, MOSFET drivers**
 
@@ -90,36 +91,6 @@ Examples:
 
 ---
 
-## 🚀 Basic Example
-
-```cpp
-#include <Arduino.h>
-#include <ShiftRegister74HC595.h>
-#include <StepperShiftRegister74HC595.h>
-
-// 2 shift registers = 16 outputs
-ShiftRegister74HC595<2> sr(2, 3, 4);  // (data pin, clock pin, latch pin)
-
-StepperShiftRegister74HC595<2> motor1(2048, sr, 0, 1, 2, 3);
-StepperShiftRegister74HC595<2> motor2(2048, sr, 4, 5, 6, 7);
-StepperShiftRegister74HC595<2> motor3(2048, sr, 8, 9, 10, 11);
-
-void setup() {
-  motor1.setSpeed(18);  // RPM
-  motor2.setSpeed(15);
-  motor3.setSpeed(10);
-}
-
-void loop() {
-  motor1.step(200);
-  motor2.step(-100);
-  motor3.step(50);
-  delay(500);
-}
-```
-
----
-
 ## 🔗 Required Dependency
 
 This library **depends on** the following external library:
@@ -174,6 +145,36 @@ This means:
 
 * Not suitable for time-critical multitasking
 
+## 🚀 Basic Example 1 (Blocking)
+
+```cpp
+#include <Arduino.h>
+#include <ShiftRegister74HC595.h>
+#include <StepperShiftRegister74HC595.h>
+
+// 2 shift registers = 16 outputs
+ShiftRegister74HC595<2> sr(2, 3, 4);  // (data pin, clock pin, latch pin)
+
+StepperShiftRegister74HC595<2> motor1(2048, sr, 0, 1, 2, 3);
+StepperShiftRegister74HC595<2> motor2(2048, sr, 4, 5, 6, 7);
+StepperShiftRegister74HC595<2> motor3(2048, sr, 8, 9, 10, 11);
+
+void setup() {
+  motor1.setSpeed(15);  // RPM
+  motor2.setSpeed(12);
+  motor3.setSpeed(10);
+}
+
+void loop() {
+  motor1.step(200);
+  motor2.step(-100);
+  motor3.step(50);
+  delay(500);
+}
+```
+
+---
+
 If you need:
 
 * Non-blocking control
@@ -181,6 +182,86 @@ If you need:
 * Multi-axis sync
 
 👉 Ask for an **async version**
+
+---
+
+## 🚦 Non-Blocking (Asynchronous) Behavior
+
+This means:
+
+* The motor moves in the background
+* Your program continues running
+
+Ideal for:
+* Multiple stepper motors
+* Sensors
+* WiFi / BLE
+* Displays
+* Real-time systems (ESP32, ESP8266)
+
+✅ The `stepAsync()` function is non-blocking.
+
+⚠️ Important:
+You must call `update()` repeatedly (usually inside `loop()`) for the motor to advance.
+
+## 🚀 Basic Example 2 (Non-Blocking / Async)
+```cpp
+#include <Arduino.h>
+#include <ShiftRegister74HC595.h>
+#include <StepperShiftRegister74HC595.h>
+
+// 2 shift registers = 16 outputs
+ShiftRegister74HC595<2> sr(2, 3, 4);  // (data pin, clock pin, latch pin)
+
+StepperShiftRegister74HC595<2> motor1(2048, sr, 0, 1, 2, 3);
+StepperShiftRegister74HC595<2> motor2(2048, sr, 4, 5, 6, 7);
+StepperShiftRegister74HC595<2> motor3(2048, sr, 8, 9, 10, 11);
+
+void setup() {
+  motor1.setSpeed(15);  // RPM
+  motor2.setSpeed(12);
+  motor3.setSpeed(10);
+
+  // Start motors asynchronously
+  motor1.stepAsync(200);
+  motor2.stepAsync(-100);
+  motor3.stepAsync(50);
+}
+
+void loop() {
+  // Update motors (VERY IMPORTANT) MUST be called often
+  motor1.update();
+  motor2.update();
+  motor3.update();
+
+  if (!motor1.isRunning()) {
+    // do something when finished
+  }
+
+  if (!motor2.isRunning()) {
+    // do something when finished
+  }
+
+  if (!motor3.isRunning()) {
+    // do something when finished
+  }
+
+  // Other functions logics goes here...
+}
+```
+
+---
+
+### Blocking vs Non-blocking control
+
+- `step(steps)`
+  - Blocks until movement is complete
+  - Compatible with Arduino Stepper behavior
+
+- `stepAsync(steps)`
+  - Non-blocking
+  - Requires `update()` to be called frequently
+  - Ideal for ESP32, WiFi, sensors, UI, and multitasking
 
 ---
 
@@ -237,7 +318,16 @@ SOFTWARE.
 
 ## 🚧 Roadmap
 
-* [ ] Half-step mode
-* [ ] SPI backend
-* [ ] Non-blocking motion engine
-* [ ] Central motor manager
+* [x] **Non-blocking motion engine (async stepping)**
+* [ ] **Half-step mode**
+  *Higher resolution, smoother motion*
+* [ ] **SPI backend**
+  *Hardware SPI for faster shift register updates*
+* [ ] **Acceleration / deceleration (ramp profiles)**
+  *Avoid missed steps at high speed*
+* [ ] **Central motor manager**
+  *Single update loop for many motors*
+* [ ] **Stepper driver abstraction**
+  *ULN2003, H-bridge, custom drivers*
+
+---
