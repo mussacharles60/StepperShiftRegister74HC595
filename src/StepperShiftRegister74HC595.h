@@ -40,8 +40,8 @@ public:
 private:
     void stepMotor(uint8_t step);
 
-    // Motor direction (0 = reverse, 1 = forward)
-    int _direction;
+    // Step direction: +1 = forward, -1 = reverse
+    int _direction = 1;
 
     // Steps per full revolution
     int _stepsPerRev;
@@ -69,9 +69,6 @@ private:
 
     // Number of steps already executed in async mode
     long _currentSteps = 0;
-
-    // Step direction: +1 = forward, -1 = reverse
-    int _direction = 1;
 
     // Indicates whether the motor is currently moving asynchronously
     bool _isMoving = false;
