@@ -10,8 +10,8 @@ StepperShiftRegister74HC595<2> motor2(2048, sr, 4, 5, 6, 7);
 StepperShiftRegister74HC595<2> motor3(2048, sr, 8, 9, 10, 11);
 
 void setup() {
-  motor1.setSpeed(18);  // RPM
-  motor2.setSpeed(15);
+  motor1.setSpeed(15);  // RPM
+  motor2.setSpeed(12);
   motor3.setSpeed(10);
 }
 
