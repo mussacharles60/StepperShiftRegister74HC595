@@ -1,5 +1,12 @@
 # StepperShiftRegister74HC595
 
+[![PlatformIO Registry](https://badges.registry.platformio.org/packages/mussacharles60/library/StepperShiftRegister74HC595.svg)](https://registry.platformio.org/libraries/mussacharles60/StepperShiftRegister74HC595)
+[![Version](https://img.shields.io/github/v/release/mussacharles60/StepperShiftRegister74HC595)](https://github.com/mussacharles60/StepperShiftRegister74HC595/releases)
+[![License](https://img.shields.io/github/license/mussacharles60/StepperShiftRegister74HC595)](LICENSE)
+![Framework](https://img.shields.io/badge/framework-Arduino-blue)
+![MCU](https://img.shields.io/badge/MCU-AVR%20%7C%20ESP32%20%7C%20ESP8266-green)
+
+
 Control one or more stepper motors using **74HC595 shift registers** while consuming only **3 microcontroller pins**.
 
 This library is designed for **Arduino & PlatformIO** projects where pin count is limited and multiple stepper motors are needed.
@@ -99,7 +106,7 @@ Examples:
 
 ---
 
-## 🔗 Required Dependency
+<!-- ## 🔗 Required Dependency
 
 This library **depends on** the following external library:
 
@@ -127,7 +134,7 @@ Or install it via the PlatformIO Library Manager.
 
 ⚠ This library will not compile without ShiftRegister74HC595 installed.
 
----
+--- -->
 
 ## 🌀 Step Modes
 
