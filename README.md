@@ -190,16 +190,6 @@ void loop() {
 
 ---
 
-If you need:
-
-* Non-blocking control
-* Acceleration
-* Multi-axis sync
-
-👉 Ask for an **async version**
-
----
-
 ## 🚦 Non-Blocking (Asynchronous) Behavior
 
 This means:
