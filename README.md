@@ -25,6 +25,16 @@ This library is designed for **Arduino & PlatformIO** projects where pin count i
 
 ---
 
+# Basic Circuit Diagram
+
+![Sample circuit diagram of Arduino with 74HC595 shift registers and 3 stepper motors (png)](/examples/sample_circuit.png)
+
+![Sample circuit diagram of Arduino with 74HC595 shift registers and 3 stepper motors (svg)](/examples/sample_circuit.svg)
+
+[Click here for circuit diagram source link](https://app.cirkitdesigner.com/project/cf9f8d4d-f092-4e92-b2ee-7bc8a3677775)
+
+---
+
 ## ❗ Important Notice
 
 ⚠ **DO NOT connect stepper motors directly to the 74HC595**
