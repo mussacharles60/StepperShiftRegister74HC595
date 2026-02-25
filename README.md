@@ -57,7 +57,7 @@ Add it to your `platformio.ini`:
 
 ```ini
 lib_deps =
-  mussacharles60/StepperShiftRegister74HC595@^1.0.2
+  mussacharles60/StepperShiftRegister74HC595@^1.0.4
 ```
 PlatformIO will auto-import it.
 
@@ -105,7 +105,7 @@ With chained shift registers, pin numbering continues:
 ```cpp
 ShiftRegister74HC595<Size>
 
-Size = number of 74HC595 ICs chained together.
+Size = number of 74HC595 ICs chained together
 ```
 
 Examples:
