@@ -15,7 +15,7 @@ This library is designed for **Arduino & PlatformIO** projects where pin count i
 
 ## ✨ Features
 
-* ✅ Uses **only 3 MCU pins** (DATA, CLOCK, LATCH)
+* ✅ Uses **only 3 MCU pins** (DATA, CLOCK & LATCH)
 * ✅ Supports **multiple chained 74HC595** shift registers
 * ✅ Drive **multiple stepper motors** simultaneously
 * ✅ Familiar Arduino `Stepper`-style API
