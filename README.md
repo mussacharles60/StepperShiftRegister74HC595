@@ -74,6 +74,14 @@ PlatformIO will auto-detect it.
 
 ---
 
+## 📦 Installation (Arduino IDE)
+
+1. Open Library Manager
+2. Search for “StepperShiftRegister74HC595”
+3. Install the library
+
+---
+
 ## 🔌 Wiring Overview
 
 ### Microcontroller → 74HC595
@@ -115,36 +123,6 @@ Examples:
 * Size = 3 → 24 outputs
 
 ---
-
-<!-- ## 🔗 Required Dependency
-
-This library **depends on** the following external library:
-
-### ShiftRegister74HC595  
-**Author:** Timo Denk  
-
-This library handles all low-level communication with the 74HC595 shift registers.
-
-### Installation (PlatformIO)
-
-Add the dependency to your `platformio.ini`:
-
-```ini
-lib_deps =
-    simsso/ShiftRegister74HC5955 @ ^1.3.1
-```
-
-Or install it via the PlatformIO Library Manager.
-
-### Installation (Arduino IDE)
-
-1. Open Library Manager
-2. Search for “ShiftRegister74HC595”
-3. Install the library by Timo Denk
-
-⚠ This library will not compile without ShiftRegister74HC595 installed.
-
---- -->
 
 ## 🌀 Step Modes
 
